@@ -628,7 +628,7 @@
       </div>
 
       <div class="match-details">
-        <span>📅 <strong>19 de junho de 2026</strong></span>
+        <span>📅 <strong>19 de junho de 2026</strong> (HOJE)</span>
         <span>🕒 <strong>21:30</strong> (Brasília)</span>
         <span>🏟️ <strong>Lincoln Financial Field</strong>, Filadélfia</span>
       </div>
@@ -735,6 +735,11 @@
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
       const TABLE_NAME = 'palpites';
+
+      // ============================================
+      // 🔴 DATA CORRETA: 19/06/2026 21:30 (horário de Brasília)
+      // Em UTC: 20/06/2026 00:30
+      // ============================================
       const DATA_PARTIDA = '2026-06-20T00:30:00Z';
 
       let filterMode = 'todos';
@@ -779,10 +784,12 @@
           cdStatus.textContent = '⏹️ Palpites Encerrados';
           cdStatus.className = 'countdown-status encerrado';
           btnPalpite.disabled = true;
+          btnPalpite.textContent = 'Encerrado';
         } else {
           cdStatus.textContent = '⏳ Aguardando início da partida';
           cdStatus.className = 'countdown-status';
           btnPalpite.disabled = false;
+          btnPalpite.textContent = 'Enviar';
         }
       }
 
